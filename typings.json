@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "soundcloud": "registry:npm/soundcloud#3.1.2+20161205084507"
+  },
+  "globalDependencies": {
+    "service_worker_api": "registry:dt/service_worker_api#0.0.0+20161208200532"
+  }
+}
