@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 
 export interface IStore {
-    openDB(name: string, version: number): IPromise<IDBDatabase>;
-    createObjectStore(db: any, objectStoreValue: string, keyPath: string): IPromise;
+    openDB(name: string, version: number): any;
+    createObjectStore(db: any, objectStoreValue: string, keyPath: string): any;
     addValueToObjectStore(db:any, transactionValue: string, objectStoreValue: string, value: Array<any>);
     removeValueFromObjectStore (db: any, objectStoreName: string, key: string);
     updateValueInTheObjectStore(objectStore: any, key:string);
@@ -21,8 +21,8 @@ export class StoreService {
     constructor() {
         this.indexedDB = window.indexedDB;
     };
-
-    openDB(name: string, version: number): IPromise<IDBDatabase> {
+    // IPromise<IDBDatabase>
+    openDB(name: string, version: number): any  {
         this.indexedDBRequest = this.indexedDB.open(name, version);
         this.indexedDBRequest.onerror = function(event) {
             // event.target.errorCode
@@ -52,7 +52,7 @@ export class StoreService {
     }
 
 
-    createObjectStore(db: any, objectStoreValue: string, keyPath: string): IPromise {
+    createObjectStore(db: any, objectStoreValue: string, keyPath: string): any {
         const objectStore = db.createObjectStore(objectStoreValue, { keyPath: keyPath });
         return objectStore.transaction; // return a Promise
     }
@@ -135,3 +135,5 @@ export class StoreService {
         };
     }
 }
+
+export default StoreService;
